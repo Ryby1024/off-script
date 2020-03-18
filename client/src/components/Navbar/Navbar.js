@@ -21,6 +21,12 @@ class Navbar extends Component{
                                 Register
                             </Link>
                         </li>
+
+                        <li>
+                            <Link to="/search" className={window.location.pathname === "/search"  ? "nav-link active" : "nav-link"}>
+                                Search Movies
+                            </Link>
+                        </li>
                     </ul>
             </nav>
         )

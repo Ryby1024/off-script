@@ -50,7 +50,7 @@ class Login extends Component {
               <form id="login-form">
                 <Row>
                   <Col size="s12">
-                    <label for="username">Username</label>
+                    <label htmlFor="username">Username</label>
                     <input
                       placeholder="Username"
                       name="username"
@@ -64,7 +64,7 @@ class Login extends Component {
 
                 <Row>
                   <Col size="s12">
-                    <label for="password">Password</label>
+                    <label htmlFor="password">Password</label>
                     <input
                       placeholder="Password"
                       name="password"
@@ -75,6 +75,12 @@ class Login extends Component {
                       className="validate"></input>
                   </Col>
                 </Row>
+                <button 
+                
+                onClick={this.login}
+                className="btn waves-effect waves-light" type="submit" name="action">Submit
+                <i className="material-icons right">send</i>
+                </button>
                 <Link to="/register">Not registered? Click here.</Link>
               </form>
             </div>

@@ -1,4 +1,6 @@
 import axios from "axios";
+const BaseURL = "https://www.omdbapi.com/?t=";
+const APIKEY = "&apikey=279e7e43";
 
 export default {
   register: function (user) {
@@ -15,5 +17,8 @@ export default {
   },
   availableUN: function (username) {
     return axios.get("/api/user/?username=" + username);
+  },
+  search: function(query) {
+    return axios.get(BaseURL + query + APIKEY);
   }
 };

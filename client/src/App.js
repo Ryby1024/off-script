@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Navbar from "./components/Navbar/Navbar";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
+import Search from "./pages/Search/Search";
 import API from "./utils/API";
 import "./App.css";
 
@@ -65,6 +66,13 @@ class App extends Component {
               {this.state.authorized ? (
                 <Redirect to="/" />) : (
                   <Register isAuthorized={this.isAuthorized} />
+                )}
+            </Route>
+
+            <Route exact path="/search">
+              {this.state.authorized ? (
+                <Search  />) : (
+                  <Redirect to="/login" />
                 )}
             </Route>
           
