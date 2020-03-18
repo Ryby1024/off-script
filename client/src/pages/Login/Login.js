@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../components/Grid";
+import { Col, Row, Container } from "../../components/Grid/Grid";
 import API from "../../utils/API";
-import "./style.css";
 
 class Login extends Component {
   state = {
@@ -45,6 +44,42 @@ class Login extends Component {
   render() {
     return (
       <Container>
+        <Row>
+          <Col size="s12">
+            <div className="loginContainer">
+              <form id="login-form">
+                <Row>
+                  <Col size="s12">
+                    <label for="username">Username</label>
+                    <input
+                      placeholder="Username"
+                      name="username"
+                      value={this.state.username}
+                      onChange={this.handleInputChange}
+                      id="username"
+                      type="text"
+                      className="validate"></input>
+                  </Col>
+                </Row>
+
+                <Row>
+                  <Col size="s12">
+                    <label for="password">Password</label>
+                    <input
+                      placeholder="Password"
+                      name="password"
+                      value={this.state.password}
+                      onChange={this.handleInputChange}
+                      id="password"
+                      type="text"
+                      className="validate"></input>
+                  </Col>
+                </Row>
+                <Link to="/register">Not registered? Click here.</Link>
+              </form>
+            </div>
+          </Col>
+        </Row>
 
       </Container>
     );
