@@ -4,6 +4,7 @@ import API from "../../utils/API";
 import { withRouter } from "react-router-dom";
 import MovieCard from "../../components/MovieCard/MovieCard";
 import axios from "axios";
+import "./Search.css";
 
 
 class Search extends Component {
@@ -13,10 +14,15 @@ class Search extends Component {
 
         this.state = {
             result: [],
-            search: ""
+            title:  "",
+            search: "",
+            rating: "",
+            comment: "",
+            showRatingForm: false
         }
         this.handleInputChange = this.handleInputChange.bind(this);
-        this.APIKEY = process.env.REACT_API_KEY
+        this.APIKEY = process.env.REACT_API_KEY;
+        this.rateMovie = this.rateMovie.bind(this);
     }
 
     componentDidMount() {
@@ -30,6 +36,33 @@ class Search extends Component {
 
 
     };
+
+    showForm = () => {
+        return (
+            <Container>
+            <Row>
+                <Col size="s12">
+            <div id="movie-rate"> 
+           <form id= "rate-movie" onClick={this.newRating}>
+       
+                <label>Movie Name : </label>
+                <input type="text"name="title" value={this.state.result.Title} onChange={this.handleInputChange} placeholder={this.state.result.Title}/>
+       
+                <label>Rating:   </label>
+                <input onChange={this.handleInputChange} name="rating" value={this.state.rating} type="text" placeholder="Between 1-10" />
+       
+                <label>Comment: </label>
+                <input name="comment" value={this.state.comment} onChange={this.handleInputChange} type="text" placeholder="Enter comments here"/>
+       
+                <button className="btn waves-effect waves-light" type="submit" name="action">Submit</button>
+             </form>
+             
+             </div>
+             </Col>
+             </Row>
+             </Container>
+            );
+    }
 
 
 
@@ -47,7 +80,7 @@ class Search extends Component {
             }).catch(err => console.log(err));
 
     }
-    handleMovieSubmit = (event) => {
+    handleMovieSearch = (event) => {
         event.preventDefault();
         axios.get(`https://www.omdbapi.com/?t=${this.state.search}&apikey=279e7e43`)
         .then(res => {
@@ -59,21 +92,28 @@ class Search extends Component {
         }).catch(err => console.log(err))
         
     }
+    rateMovie = () => {
+        this.setState({showRatingForm: true})
+    }
+    newRating = () => {
 
+    }
 
     render() {
+        const { showRatingForm } = this.state
         return (
             <Container>
-                <Row>
-                    <Col size="s8">
+                <div className="row" id="movie-card">
+                    <div className="col s6">
                         <MovieCard
                             Poster={this.state.result.Poster}
                             Title={this.state.result.Title}
                             Plot={this.state.result.Plot}
-                            Released={this.state.result.Released} />
-                    </Col>
-                    <Col size="s4">
-                        <form action="" onSubmit={this.handleMovieSubmit}>
+                            Released={this.state.result.Released} 
+                            rateMovie={this.rateMovie} />
+                    </div>
+                    <div className="col s6" id="search-form">
+                        <form action="" onSubmit={this.handleMovieSearch}>
                         <label htmlFor="search">Search Movies</label>
                         <input placeholder="Movie Title"
                             name="search"
@@ -84,8 +124,9 @@ class Search extends Component {
                         <button className="btn waves-effect waves-light" type="submit" name="action">Submit 
                         </button>
                         </form>
-                    </Col>
-                </Row>
+                    </div>
+                </div>
+                {showRatingForm && this.showForm()}
             </Container>
         )
     }

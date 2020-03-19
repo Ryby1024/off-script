@@ -10,6 +10,13 @@ const User = new Schema({
         match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please enter a valid email address']
     },
     created: { type: Date, required: true, default: Date.now() },
+
+    movie: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Movie"
+        }
+    ]
 });
 
 User.plugin(passportLocalMongoose);

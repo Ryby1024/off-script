@@ -63,4 +63,6 @@ router.get("/api/authorized", isAuthenticated, function(req, res) {
   res.json(req.user);
 });
 
+
+
 module.exports = router;
