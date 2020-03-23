@@ -21,7 +21,7 @@ export default {
   search: function(query) {
     return axios.get(BaseURL + query + APIKEY);
   },
-  rateMovie: function(user) {
+  newRating: function(user) {
     return axios.post("/api/search", user)
   }
 };
