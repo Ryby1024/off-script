@@ -71,8 +71,6 @@ router.post("/api/search", function (req, res) {
   })
   .then(function(dbUser){
     res.json(dbUser)
-    console.log(dbUser)
-    console.log(dbMovie)
   })
   .catch(function(err){
     console.log(err);

@@ -76,10 +76,10 @@ class Search extends Component {
                 <Row>
                     <Col size="s12">
                         <div id="movie-rate">
-                            <form id="rate-movie" onClick={this.newRating}>
+                            <form id="rate-movie">
 
                                 <label>Movie Name : </label>
-                                <input type="text" className={formErrors.title.length > 0 ? "error" : null}name="title" noValidate value={this.state.result.Title} onChange={this.handleInputChange} placeholder={this.state.result.Title} />
+                                <input onChange={this.handleInputChange}  className={formErrors.title.length > 0 ? "error" : null} name="title" noValidate value={this.state.title} type="text"  placeholder={this.state.result.Title} />
                                 {formErrors.title.length > 0 && (
                                     <span className="errorMessage">{formErrors.title}</span>
                                 )}
@@ -91,7 +91,7 @@ class Search extends Component {
                                 <label>Comment: </label>
                                 <input name="comment" value={this.state.comment} onChange={this.handleInputChange} type="text" placeholder="Enter comments here" />
 
-                                <button className="btn waves-effect waves-light" type="submit" name="action">Submit</button>
+                                <button onClick={this.newRating} className="btn waves-effect waves-light" type="submit" name="action">Submit</button>
                             </form>
 
                         </div>
