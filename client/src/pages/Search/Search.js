@@ -32,7 +32,7 @@ class Search extends Component {
             result: [],
             title: "",
             search: "",
-            rating: "",
+            rating: null,
             comment: "",
             showRatingForm: false,
             formErrors: {
@@ -156,8 +156,8 @@ class Search extends Component {
         const { showRatingForm } = this.state
         return (
             <Container>
-                <div className="row" id="movie-card">
-                    <div className="col s6">
+                <div className="row" >
+                    <div className="col s6" id="movie-card">
                         <MovieCard
                             Poster={this.state.result.Poster}
                             Title={this.state.result.Title}

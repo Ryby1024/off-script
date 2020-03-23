@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Search from "./pages/Search/Search";
+import Movie from "./pages/Movies/Movies";
 import API from "./utils/API";
 import "./App.css";
 
@@ -72,6 +73,13 @@ class App extends Component {
             <Route exact path="/search">
               {this.state.authorized ? (
                 <Search  />) : (
+                  <Redirect to="/login" />
+                )}
+            </Route>
+
+            <Route exact path="/movie">
+              {this.state.authorized ? (
+                <Movie  />) : (
                   <Redirect to="/login" />
                 )}
             </Route>

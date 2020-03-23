@@ -1,5 +1,5 @@
 #poster {
-    height: 300px;
-    width: 300px;
+    height: auto;
+    width: 100%;
     color: pink;
 }

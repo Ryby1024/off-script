@@ -4,7 +4,7 @@ import "./MovieCard.css"
 
 const MovieCard = (props) => {
     return(
-        <div className="card small">
+        <div className="card">
             <div className="card-image">
                 <img id="poster"src={props.Poster}/>
                 </div>
