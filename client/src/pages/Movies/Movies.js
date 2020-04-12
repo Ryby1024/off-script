@@ -10,8 +10,10 @@ class Movie extends Component {
         super(props);
 
         this.state = {
-            movie: [],
+            movies: [],
+            id: "",
             title: "",
+            plot: "",
             rating: null,
             comment: ""
         }
@@ -23,18 +25,38 @@ class Movie extends Component {
     handleInputChange = event => {
         event.preventDefault();
         const { name, value } = event.target;
-        this.setState({ [name]: value }, () => console.log(this.state));
+        this.setState({ 
+            [name]: value
+         });
     }
 
     getMovies = () => {
         API.getMovies()
         .then(res => {
-            let allMovies = res.data.movie;
+            let allMovies = res.data;
             console.log(allMovies)
             this.setState({
-                movie: allMovies
+                movies: allMovies
             })
         })
+        
+    }
+
+    get ratedMovies(){
+        const { movies } = this.state
+        console.log(movies);
+        if(Array.isArray(movies)) {
+            return movies.map( movie => {
+                return <MovieCard 
+                key={movie._id}
+                id={movie._id}
+                title={movie.title}
+                plot={movie.plot}
+                rating={movie.rating}
+                comment={movie.comment}
+                />
+            })
+        }
     }
 
     
@@ -45,14 +67,7 @@ class Movie extends Component {
                 <h1>Movies</h1>
                 <Row>
                     <Col size="sm-12">
-                        <MovieCard 
-                        key={this.state.movie._id}
-                        _id={this.state.movie._id}
-                        Title={this.state.movie.title}
-                        Plot={this.state.movie.Plot}
-                        rating={this.state.rating}
-
-                        />
+                       {this.ratedMovies}
                     </Col>
                 </Row>
             </Container>

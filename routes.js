@@ -63,7 +63,7 @@ router.get("/api/authorized", isAuthenticated, function(req, res) {
   res.json(req.user);
 });
 
-router.get("/api/movie", isAuthenticated, function(req, res){
+router.get("/api/movie/", isAuthenticated, function(req, res){
   db.Movie.find()
   .then(function(dbMovie) {
     res.json(dbMovie);
