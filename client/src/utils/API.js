@@ -23,5 +23,8 @@ export default {
   },
   newRating: function(user) {
     return axios.post("/api/search", user)
+  },
+  getMovies: function() {
+    return axios.post("/api/movie")
   }
 };

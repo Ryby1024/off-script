@@ -63,6 +63,18 @@ router.get("/api/authorized", isAuthenticated, function(req, res) {
   res.json(req.user);
 });
 
+router.get("/api/movie", isAuthenticated, function(req, res){
+  db.Movie.find()
+  .then(function(dbMovie) {
+    res.json(dbMovie);
+    console.log(dbMovie);
+    console.log("working")
+  }).catch(function(err){
+    res.json(err)
+  })
+});
+
+
 router.post("/api/search", function (req, res) {
   db.Movie.create({title: req.body.title, rating: req.body.rating, comment: req.body.comment})
   .then(function(dbMovie) {
