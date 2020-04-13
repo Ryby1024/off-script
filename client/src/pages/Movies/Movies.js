@@ -2,8 +2,8 @@ import React, { Component} from "react";
 import {Container, Row, Col} from "../../components/Grid/Grid";
 import API from "../../utils/API";
 import { withRouter } from "react-router-dom";
-import MovieCard from "../../components/MovieCard/MovieCard";
 import axios from "axios";
+import RatedMovieCard from "../../components/RatedMovieCard/RatedMovieCard";
 
 class Movie extends Component {
     constructor(props){
@@ -48,11 +48,11 @@ class Movie extends Component {
             return movies.map( movie => {
                 if(movie.rating) {
                     console.log(movie.title)
-                return <MovieCard 
+                return <RatedMovieCard 
                 key={movie._id}
                 id={movie._id}
-                Title={movie.title}
-                Rating={movie.rating}
+                title= {movie.title} 
+                rating={movie.rating}
                 comment={movie.comment}
                 />
                 }

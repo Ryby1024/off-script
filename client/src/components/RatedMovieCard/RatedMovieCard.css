@@ -1,0 +1,18 @@
+.rated-card {
+    border: 1px solid black;
+    margin: 5px;
+    background-color: lime;
+}
+
+.card-header {
+    font-size: 20px;
+    color: blue;
+}
+
+h4{
+    text-align: center;
+}
+
+p{
+    text-align: center;
+}
