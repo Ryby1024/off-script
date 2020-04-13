@@ -13,7 +13,6 @@ class Movie extends Component {
             movies: [],
             id: "",
             title: "",
-            plot: "",
             rating: null,
             comment: ""
         }
@@ -47,14 +46,16 @@ class Movie extends Component {
         console.log(movies);
         if(Array.isArray(movies)) {
             return movies.map( movie => {
+                if(movie.rating) {
+                    console.log(movie.title)
                 return <MovieCard 
                 key={movie._id}
                 id={movie._id}
-                title={movie.title}
-                plot={movie.plot}
-                rating={movie.rating}
+                Title={movie.title}
+                Rating={movie.rating}
                 comment={movie.comment}
                 />
+                }
             })
         }
     }
