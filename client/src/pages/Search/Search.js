@@ -5,7 +5,7 @@ import { withRouter } from "react-router-dom";
 import MovieCard from "../../components/MovieCard/MovieCard";
 import axios from "axios";
 import "./Search.css";
-
+import $ from "jquery";
 
 const formValid = ({ formErrors, ...rest }) => {
     let valid = true;
@@ -131,6 +131,8 @@ class Search extends Component {
     }
     rateMovie = () => {
         this.setState({ showRatingForm: true })
+        $("#movie-card").hide();
+        $("#search-form").hide();
     }
     newRating = (event) => {
         event.preventDefault();
